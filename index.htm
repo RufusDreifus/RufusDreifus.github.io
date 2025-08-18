@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Dr. Nikolay Bukharin — Fluid Mechanic</title>
   <meta name="description" content="Dr. Nikolay Bukharin — Fluid Mechanic, Philosopher, Educator, turbulence whisperer, vortex tamer, espresso-fueled coder." />
-  <!-- Social preview (optional; upload og-image.jpg) -->
   <meta property="og:title" content="Dr. Nikolay Bukharin" />
   <meta property="og:description" content="Fluid Mechanic, Philosopher, Educator, turbulence whisperer, vortex tamer." />
   <meta property="og:type" content="website" />
@@ -13,7 +12,6 @@
   <meta name="theme-color" content="#1f8ceb" />
   <link rel="icon" href="favicon.ico" />
   <style>
-    /* --- Base, layout --- */
     :root{
       --bg:#fff; --text:#111; --muted:#666; --card:#f8f9fb;
       --ring1:#1f8ceb; --ring2:#7f56d9; --ring3:#12b886;
@@ -33,16 +31,12 @@
     a{color:var(--accent); text-decoration:none;}
     a:hover{opacity:.9;}
 
-    /* --- Header / hero --- */
     .hero{display:grid; grid-template-columns:120px 1fr; gap:24px; align-items:center; margin:12px 0 10px;}
     .avatar{position:relative; width:120px; aspect-ratio:1/1; border-radius:50%; overflow:hidden; box-shadow:var(--shadow);}
     .avatar img{width:100%; height:100%; object-fit:cover; display:block;}
     .ring{position:absolute; inset:-6px; border-radius:50%;
       background:conic-gradient(from 0deg, var(--ring1), var(--ring2), var(--ring3), var(--ring1));
-      filter:saturate(120%);
-      animation:spin 10s linear infinite;
-      z-index:-1;
-    }
+      filter:saturate(120%); animation:spin 10s linear infinite; z-index:-1;}
     @keyframes spin{to{transform:rotate(360deg);}}
     @media (prefers-reduced-motion: reduce){ .ring{animation:none;} }
 
@@ -57,25 +51,34 @@
     .subtitle{margin:6px 0 0; color:var(--muted); font-weight:600;}
     .roles{display:inline-block; min-height:1.6em}
 
-    /* --- Social icons --- */
     .social{display:flex; gap:12px; margin:14px 0 0;}
     .icon{width:36px; height:36px; border-radius:10px; display:grid; place-items:center; background:var(--card); box-shadow:var(--shadow); transition:transform .12s ease;}
     .icon:hover{transform:translateY(-2px) scale(1.03);}
-    .icon svg{width:20px; height:20px; fill:currentColor; color:var(--text); opacity:.9;}
+    .icon svg{width:20px; height:20px; fill:currentColor; color:var(--text); opacity:.95;}
+    .icon--linkedin{color:#0A66C2;}
+    .icon--scholar{color:#4285F4;}
+    .icon--rg{color:#00CCBB;}
 
-    /* --- Card sections --- */
     .card{background:var(--card); border-radius:18px; padding:22px; box-shadow:var(--shadow); margin:22px 0;}
     .pillset{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;}
     .pill{background:var(--pill); color:var(--pill-text); padding:6px 12px; border-radius:999px; font-weight:600; font-size:.95rem;}
 
-    /* --- Lists --- */
-    .skills{display:grid; grid-template-columns:1fr; gap:6px;}
-    @media (min-width:720px){ .skills{grid-template-columns:1fr 1fr;}}
-    .skills li{list-style:none; padding:6px 0;}
-    .skills strong{display:inline-block; min-width:180px;}
+    .skillgrid{display:grid; grid-template-columns:1fr; gap:14px;}
+    @media (min-width:720px){ .skillgrid{grid-template-columns:1fr 1fr;}}
+    .skill{background:transparent; border:1px solid rgba(0,0,0,.06); border-radius:14px; padding:14px;}
+    .skill h3{margin:0 0 10px; font-size:1rem; display:flex; align-items:center; gap:.5rem; color:var(--muted);}
+    .skill .pillset{margin:0;}
+    .skill .pill{padding:4px 10px; font-weight:600; font-size:.9rem;}
 
-    /* --- Footer --- */
     footer{margin-top:26px; color:var(--muted); font-size:.95rem; text-align:center;}
+
+    /* BJJ gi+belt icon */
+    .gi{width:22px; height:22px; display:inline-block; vertical-align:-4px;}
+    .gi path, .gi rect{stroke:currentColor; stroke-width:2; fill:none;}
+    .gi .belt, .gi .knot{fill:#000; stroke:none;}
+    @media (prefers-color-scheme: dark){
+      .gi .belt, .gi .knot{fill:#e8eef5;}
+    }
   </style>
 </head>
 <body>
@@ -93,18 +96,21 @@
         </div>
 
         <nav class="social" aria-label="Social links">
-          <!-- Replace # with your real profile URLs -->
-          <a class="icon" href="https://www.researchgate.net/" target="_blank" rel="noopener" aria-label="ResearchGate">
-            <!-- ResearchGate SVG -->
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 13.6c1 .7 2.2 1.2 3.7 1.2 3.1 0 5.6-2.5 5.6-5.6S21.5 3.6 18.4 3.6c-3.1 0-5.6 2.5-5.6 5.6 0 1.4.5 2.7 1.3 3.7l-1.4 1.5c-1.2-1.4-2-3.2-2-5.2 0-4.4 3.5-7.9 7.9-7.9s7.9 3.5 7.9 7.9-3.5 7.9-7.9 7.9c-2 0-3.8-.7-5.2-2l1.3-1.5z"/></svg>
+          <!-- LinkedIn -->
+          <a class="icon icon--linkedin" href="https://www.linkedin.com/in/nikolay-bukharin-480bb919/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 23.5h5V7.98H0V23.5zM8 23.5h5v-7.74c0-2.06.74-3.46 2.6-3.46 1.42 0 2.14 1.01 2.14 2.49v8.71h5v-9.34c0-4.99-2.66-7.31-6.22-7.31-2.86 0-4.12 1.6-4.82 2.72h.04V7.98H8c.07 1.48 0 15.52 0 15.52z"/></svg>
           </a>
-          <a class="icon" href="https://scholar.google.com/" target="_blank" rel="noopener" aria-label="Google Scholar">
-            <!-- Google Scholar SVG -->
+          <!-- Google Scholar -->
+          <a class="icon icon--scholar" href="https://scholar.google.com/citations?user=UNBFQtYAAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3L1 12l3 2.4V21l5-3.2 3 2.2 3-2.2L20 21v-6.6l3-2.4zM7 12l5-4 5 4-5 4-5-4z"/></svg>
           </a>
-          <a class="icon" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">
-            <!-- LinkedIn SVG -->
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 23.5h5V7.98H0V23.5zM8 23.5h5v-7.74c0-2.06.74-3.46 2.6-3.46 1.42 0 2.14 1.01 2.14 2.49v8.71h5v-9.34c0-4.99-2.66-7.31-6.22-7.31-2.86 0-4.12 1.6-4.82 2.72h.04V7.98H8c.07 1.48 0 15.52 0 15.52z"/></svg>
+          <!-- ResearchGate (RG logo) -->
+          <a class="icon icon--rg" href="https://www.researchgate.net/profile/Nikolay-Bukharin" target="_blank" rel="noopener" aria-label="ResearchGate">
+            <!-- CC0-style RG mark; color via currentColor -->
+            <svg viewBox="0 0 97.75 97.75" aria-hidden="true">
+              <path d="M28.781,32.006h-4.592V45.85h4.051c2.342,0,4.143-0.549,5.404-1.646c1.261-1.098,1.891-2.945,1.891-5.545 C35.535,34.225,33.284,32.006,28.781,32.006z"/>
+              <path d="M48.875,0C21.883,0,0,21.883,0,48.875S21.883,97.75,48.875,97.75S97.75,75.867,97.75,48.875S75.867,0,48.875,0z M47.153,72.867H36.495c-0.502-0.67-0.821-1.443-0.956-2.318c-0.138-0.873-0.229-1.779-0.273-2.721l-0.267-9.207 c-0.09-1.883-0.557-3.359-1.401-4.436c-0.845-1.074-2.27-1.613-4.271-1.613h-5.138v20.295h-9.728V24.883h17.967 c4.053,0,7.203,1.018,9.456,3.057c2.251,2.039,3.377,5.143,3.377,9.309c0,3.225-0.653,5.857-1.959,7.896 c-1.306,2.039-3.332,3.35-6.079,3.934v0.133c1.666,0.226,2.994,0.64,3.985,1.244c0.99,0.604,1.757,1.479,2.296,2.621 c0.541,1.143,0.912,2.588,1.114,4.336c0.204,1.746,0.327,3.896,0.372,6.451c0.045,2.553,0.191,4.502,0.439,5.846 c0.247,1.347,0.821,2.265,1.723,2.756L47.153,72.867L47.153,72.867z M83.288,72.867h-7.16v-4.434h-0.135 c-1.173,1.881-2.578,3.248-4.222,4.098c-1.645,0.852-3.614,1.277-5.91,1.277c-2.971,0-5.393-0.55-7.262-1.646 c-1.869-1.098-3.332-2.721-4.389-4.871c-1.061-2.15-1.77-4.807-2.129-7.965c-0.361-3.16-0.54-6.82-0.54-10.988 c0-4.033,0.259-7.572,0.776-10.621c0.518-3.045,1.406-5.588,2.668-7.627c1.261-2.037,2.928-3.572,4.998-4.604 c2.07-1.029,4.66-1.545,7.768-1.545c5.312,0,9.141,1.309,11.482,3.932c2.342,2.621,3.512,6.373,3.512,11.258h-9.32 c0-0.852-0.102-1.76-0.305-2.723c-0.201-0.963-0.529-1.836-0.979-2.621c-0.451-0.783-1.024-1.434-1.723-1.951 c-0.697-0.512-1.543-0.771-2.531-0.771c-2.344,0-4.031,1.299-5.066,3.898c-1.036,2.599-1.553,6.9-1.553,12.904 c0,2.912,0.09,5.523,0.269,7.83c0.18,2.309,0.509,4.279,0.979,5.914c0.474,1.635,1.148,2.889,2.025,3.764 c0.88,0.873,2.016,1.311,3.412,1.311c0.584,0,1.227-0.158,1.924-0.473c0.698-0.311,1.352-0.781,1.959-1.41 c0.607-0.627,1.114-1.42,1.52-2.385c0.406-0.963,0.608-2.094,0.608-3.395v-4.906h-6.417v-7.125h15.738L83.288,72.867 L83.288,72.867z"/>
+            </svg>
           </a>
         </nav>
       </div>
@@ -131,20 +137,79 @@
     </section>
 
     <section class="card" aria-label="BJJ">
-      <h2>🥋 Brazilian Jiu-Jitsu</h2>
-      <p>I’m a Brazilian Jiu-Jitsu black belt and a two-time Alberta Champion in the Adult Black Belt division. <a href="https://rockymountainbjj.com/new-page-4" target="_blank" rel="noopener">Gym link</a>.</p>
+      <h2>
+        <!-- Gi + black belt icon -->
+        <svg class="gi" viewBox="0 0 64 64" aria-hidden="true">
+          <!-- gi body -->
+          <rect x="12" y="20" width="40" height="32" rx="4"></rect>
+          <!-- lapels -->
+          <path d="M32 12 L22 24 L26 28 L32 20 L38 28 L42 24 Z"></path>
+          <!-- belt -->
+          <rect class="belt" x="12" y="36" width="40" height="6"></rect>
+          <rect class="knot" x="29" y="36" width="6" height="10"></rect>
+        </svg>
+        &nbsp;Brazilian Jiu-Jitsu
+      </h2>
+      <p>I’m a <a href="https://rockymountainbjj.com/new-page-4" target="_blank" rel="noopener"><strong>Brazilian Jiu-Jitsu black belt</strong></a> and a two-time Alberta Champion in the Adult Black Belt division.</p>
     </section>
 
     <section class="card" aria-label="Mad skills">
       <h2>🛠️ Mad skills</h2>
-      <ul class="skills">
-        <li><strong>General:</strong> MS Office, OpenOffice, LaTeX</li>
-        <li><strong>Programming:</strong> MATLAB, Python, C++, Mathematica, Maple</li>
-        <li><strong>Operating Systems:</strong> Windows, Linux</li>
-        <li><strong>DAQ &amp; Instrumentation:</strong> LabVIEW</li>
-        <li><strong>3D Design:</strong> SolidWorks, Fusion 360, Blender</li>
-        <li><strong>CFD/Vis:</strong> ANSYS CFX &amp; Fluent, Tecplot 360</li>
-      </ul>
+
+      <div class="skillgrid">
+        <div class="skill">
+          <h3>🧰 General</h3>
+          <div class="pillset">
+            <span class="pill">MS Office</span>
+            <span class="pill">OpenOffice</span>
+            <span class="pill">LaTeX</span>
+          </div>
+        </div>
+
+        <div class="skill">
+          <h3>💻 Programming</h3>
+          <div class="pillset">
+            <span class="pill">MATLAB</span>
+            <span class="pill">Python</span>
+            <span class="pill">C++</span>
+            <span class="pill">Mathematica</span>
+            <span class="pill">Maple</span>
+          </div>
+        </div>
+
+        <div class="skill">
+          <h3>🖥️ Operating Systems</h3>
+          <div class="pillset">
+            <span class="pill">Windows</span>
+            <span class="pill">Linux</span>
+          </div>
+        </div>
+
+        <div class="skill">
+          <h3>🔌 DAQ &amp; Instrumentation</h3>
+          <div class="pillset">
+            <span class="pill">LabVIEW</span>
+          </div>
+        </div>
+
+        <div class="skill">
+          <h3>🧩 3D Design</h3>
+          <div class="pillset">
+            <span class="pill">SolidWorks</span>
+            <span class="pill">Fusion 360</span>
+            <span class="pill">Blender</span>
+          </div>
+        </div>
+
+        <div class="skill">
+          <h3>🌪️ CFD / Visualization</h3>
+          <div class="pillset">
+            <span class="pill">ANSYS CFX</span>
+            <span class="pill">Fluent</span>
+            <span class="pill">Tecplot 360</span>
+          </div>
+        </div>
+      </div>
     </section>
 
     <footer>
@@ -153,10 +218,7 @@
   </div>
 
   <script>
-    // Current year
     document.getElementById('y').textContent = new Date().getFullYear();
-
-    // Rotating funny roles (minimal JS, pauses for reduced-motion users)
     const rolesEl = document.getElementById('roles');
     const roles = [
       "turbulence whisperer",
